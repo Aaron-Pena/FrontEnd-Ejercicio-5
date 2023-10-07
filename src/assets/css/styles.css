@@ -1,0 +1,36 @@
+/*CSS para index principal HOME */
+
+:root{
+
+    --font-size: 20px;
+    --font-weight: 300;
+    
+    --color-white:#ffffff;
+    --color-black: #000000;
+
+    --color-primario: #ffffffdc ;
+    --color-secundario: #0059ff ;
+    --color-terciario: #00ff7b ;
+
+    --size-header: 75px;
+    --size-nav-item: 60px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+html {
+    scroll-behavior: smooth;
+    }
+
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    font-weight: var(--font-weight);
+    background-color: var(--color-white);
+    color: var(--color-color);
+  }
