@@ -31,12 +31,13 @@ body {
     font-family: var(--font-family);
     font-size: var(--font-size);
     font-weight: var(--font-weight);
-    background-color: var(--color-white);
-    color: var(--color-color);
+    background-color: #000020;
+    color: #ff9800;
   }
 
   main {
-    background-color: #53e011;
+    text-align: center;
+    
     min-height: calc(100vh - 136px);
     border-radius: 3px;
     padding: 2rem 2rem;
@@ -48,7 +49,32 @@ body {
     margin-bottom: 20px; 
   }
   
+  #inicio{
+   text-align: center;
+  }
+  .imagen{
+    
+    justify-content: center;
+    padding: 4%;
+    margin: 2%;
+    margin-left:40%;
+    width: 20%;
+    border-radius: 45%;
+    background-color: #171a4a;
+  }
 
+  .imagen> img{
+    width: 160px;
+  }
+
+  .texto{
+    background-color: #171a4a;
+    width: 80%;
+    margin-left:10%;
+    padding: 4%;
+    text-align: center;
+   
+  }
  /* #region GENERAL */ 
  .center {
   display: block;
@@ -89,9 +115,8 @@ body {
  header {
   display: flex;
   flex-direction: row;
-  justify-content: center;
   align-items: center;
-  background-color: var(--color-primario);
+  background-color: #2f2c79;
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.10);
   text-align: center;
   font-size: 1.25rem;
@@ -103,6 +128,7 @@ body {
   header nav ul {
     display: block;
     text-transform: uppercase;
+    justify-content: space-evenly;
     list-style: none;
     padding: 0;
     text-align: center;
@@ -110,18 +136,24 @@ body {
   }
   header nav li {
     display: inline;
+    justify-content: space-evenly;
     margin-right: 2rem;
     padding: 0.5rem 2rem;
     transition: color 0.3s ease; 
   }
     header nav li:hover {
-      background: var(--color-white);
+      background: #171a4a;
       border-radius: 8px; 
+      
   }
   header nav a {
     text-decoration: none;
-    color: #4301fa;
+    color: #ff9800;
     font-weight: bold; 
+    
+  }
+  header > img{
+    width: 70px;
   }
 
 /* #endregion */
