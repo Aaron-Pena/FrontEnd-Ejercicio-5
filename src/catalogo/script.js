@@ -13,8 +13,8 @@ constructor (id, title, platform, description, price, rating, image){
 }
 
 const game1 = new CatalogoJuegos(1,"Starfield","Xbox|PC","Exploracion espacial mundo abierto",60,7,"starfield.jpg")
-const game2 = new CatalogoJuegos(2,"Payday 3","Xbox|PC|PS","Co-op shooter",70,4.5,"payday3.jpg")
-const game3 = new CatalogoJuegos(3,"Lies of P","Xbox|PC|PS","Soulslike en el mundo de Pinnocho",60,10,"lies of p.jpg")
+const game2 = new CatalogoJuegos(2,"Payday 3","Xbox|PC|PS","Co-op shooter",70,4,"payday3.jpg")
+const game3 = new CatalogoJuegos(3,"Lies of P","Xbox|PC|PS","Soulslike en el mundo de Pinnocho",50,10,"lies of p.jpg")
 
 const CatalogoJuegosList = [game1,game2,game3];
 
@@ -123,7 +123,7 @@ function initButtonsHandler() {
 
 // Funcion que gestiona la aplicacion del filtro a los datos y su despliegue.
 function applyFilters() {
-  const filterText = document.getElementById('text').value.toLowerCase();;
+  const filterText = document.getElementById('text').value.toLowerCase();
   const filterRating = parseFloat(document.getElementById('rating').value);
   const filterMinPrice = parseFloat(document.getElementById('price-min').value);
   const filterMaxPrice = parseFloat(document.getElementById('price-max').value);
@@ -141,7 +141,7 @@ function filterGames(games, text, rating, minPrice, maxPrice) {
       (!rating || game.rating === rating) &&
       (!minPrice || game.price >= minPrice) &&
       (!maxPrice || game.price <= maxPrice) &&
-      (!text     || game.name.toLowerCase().includes(text) || game.description.toLowerCase().includes(text))
+      (!text     || game.title.toLowerCase().includes(text) || game.description.toLowerCase().includes(text))
     );
 }
 

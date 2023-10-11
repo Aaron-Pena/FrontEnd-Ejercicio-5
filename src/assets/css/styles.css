@@ -1,7 +1,7 @@
 /*CSS para index principal HOME */
 
 :root{
-
+    --font-family: 'Rajdhani', sans-serif;
     --font-size: 20px;
     --font-weight: 300;
     
@@ -165,13 +165,14 @@ body {
   overflow-x: auto; }
 
 table {
+  
   width: 100%;
   border-collapse: collapse;
   white-space: nowrap;
   font-size:1.75rem;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); }
   table thead tr {
-    background-color: #771772;
+    background-color: #0059ff;
     color: #fff;
     text-align: left; }
     table thead tr th {
@@ -182,9 +183,9 @@ table {
   table tbody tr {
     border-bottom: none; }
     table tbody tr:nth-of-type(even) {
-      background-color: #0a82fa; }
+      background-color: #1a1196be; }
     table tbody tr:last-of-type {
-      border-bottom: 4px solid #ff0303d8; }
+      border-bottom: 4px solid #ff9800; }
     table tbody tr td {
       padding: 1rem 1.25rem;
       border: none;
@@ -201,10 +202,11 @@ table {
 
 /* Estilos para la sección de filtros */
 #filter-section {
-  background-color: white;
+
+  background-color: #2f2c79;
   padding: 2rem;
   border: none;
-  border: 1px solid #d1dde8;
+  border: 1px solid #ff9800;
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
@@ -226,7 +228,7 @@ input[type="number"] {
   input[type="number"]:focus,
   input[type="number"]:hover,
   input[type="number"]:active {
-    border: 1px solid var(--color-primario); }
+    border: 1px solid #ff9800; }
 
 /* Estilos para el botón del filtro */
 button {
