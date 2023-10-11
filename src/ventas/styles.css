@@ -1,0 +1,143 @@
+/*CSS para index principal HOME */
+
+:root{
+    --font-family: 'Rajdhani', sans-serif;
+    --font-size: 20px;
+    --font-weight: 300;
+    
+    --color-white:#ffffff;
+    --color-black: #000000;
+
+    --color-primario: #ff0000dc ;
+    --color-secundario: #0059ff ;
+    --color-terciario: #00ff7b ;
+
+    --size-header: 75px;
+    --size-nav-item: 60px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    text-shadow: 0 0 0.2em #ffcc50;
+    
+  }
+
+html {
+    scroll-behavior: smooth;
+    }
+
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    font-weight: var(--font-weight);
+    background-color: #000020;
+    color: #ff9800;
+  }
+
+  main {
+    text-align: center;
+    
+    min-height: calc(100vh - 136px);
+    border-radius: 3px;
+    padding: 2rem 2rem;
+    margin: 1.5rem; 
+  }
+  
+  h1 {
+    font-size: 1.75rem;
+    margin-bottom: 20px; 
+  }
+  
+  #inicio{
+   text-align: center;
+  }
+  .imagen{
+    
+    justify-content: center;
+    
+    
+    box-shadow: #ffcc50 0px 2px 4px 0px, #ffcc50 0px 2px 16px 0px;
+    padding: 4%;
+    margin: 2%;
+    margin-left:40%;
+    width: 20%;
+    border-radius: 45%;
+    background-color: #171a4a;
+  }
+
+  .imagen> img{
+    width: 160px;
+  }
+
+  .texto{
+    background-color: #171a4a;
+    width: 80%;
+    margin-left:10%;
+    padding: 4%;
+    text-align: center;
+    border-radius: 2%;
+    box-shadow: #ffcc50 0px 7px 29px 0px;
+   
+  }
+ /* #region GENERAL */ 
+
+
+/* #endregion */
+
+
+ /* #region HEADER */
+ header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #2f2c79;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.10);
+  text-align: center;
+  font-size: 1.25rem;
+  line-height: 1.25rem;
+  max-height: 70px;
+  min-height: 70px;
+  height: 70px; 
+  
+  box-shadow: #ffcc50 0px 10px 10px -10px;
+}
+
+  header nav ul {
+    display: flex;
+    flex-direction: row;
+    text-transform: uppercase;
+    justify-content: space-evenly;
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    margin: 0; 
+  }
+  header nav li {
+    justify-content: space-evenly;
+    margin-right: 20rem;
+    padding: 0.5rem 2rem;
+    transition: color 0.3s ease; 
+    
+  }
+    header nav li:hover {
+      background: #171a4a;
+      border-radius: 8px; 
+      box-shadow: #ffcc50 0px 2px 5px -1px, #ffcc50 0px 1px 3px -1px;
+      
+  }
+  header nav a {
+    text-decoration: none;
+    color: #ff9800;
+    font-weight: bold; 
+    
+  }
+  header > img{
+    display: flex;
+    width: 70px;
+    justify-content: flex-start;
+    margin-left: 2%;
+  }

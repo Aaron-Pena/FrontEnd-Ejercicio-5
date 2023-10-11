@@ -21,6 +21,8 @@
     margin: 0;
     padding: 0;
     border: 0;
+    text-shadow: 0 0 0.2em #ffcc50;
+    
   }
 
 html {
@@ -55,6 +57,9 @@ body {
   .imagen{
     
     justify-content: center;
+    
+    
+    box-shadow: #ffcc50 0px 2px 4px 0px, #ffcc50 0px 2px 16px 0px;
     padding: 4%;
     margin: 2%;
     margin-left:40%;
@@ -73,40 +78,12 @@ body {
     margin-left:10%;
     padding: 4%;
     text-align: center;
+    border-radius: 2%;
+    box-shadow: #ffcc50 0px 7px 29px 0px;
    
   }
  /* #region GENERAL */ 
- .center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-}
-.fx-row {
-  display: flex;
-  flex-direction: row;
-}
 
-.fx-column {
-  display: flex;
-  flex-direction: column;
-}
-
-.fx-content-space-between {
-  justify-content: space-between;
-}
-
-.fx-content-center {
-  justify-content: center;
-}
-
-.fx-align-items-center {
-  align-items: center;
-}
-
-.text-small {
-  font-size: 0.85rem;
-}
 
 /* #endregion */
 
@@ -116,6 +93,7 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   background-color: #2f2c79;
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.10);
   text-align: center;
@@ -124,9 +102,13 @@ body {
   max-height: 70px;
   min-height: 70px;
   height: 70px; 
+  
+  box-shadow: #ffcc50 0px 10px 10px -10px;
 }
+
   header nav ul {
-    display: block;
+    display: flex;
+    flex-direction: row;
     text-transform: uppercase;
     justify-content: space-evenly;
     list-style: none;
@@ -135,15 +117,16 @@ body {
     margin: 0; 
   }
   header nav li {
-    display: inline;
     justify-content: space-evenly;
-    margin-right: 2rem;
+    margin-right: 20rem;
     padding: 0.5rem 2rem;
     transition: color 0.3s ease; 
+    
   }
     header nav li:hover {
       background: #171a4a;
       border-radius: 8px; 
+      box-shadow: #ffcc50 0px 2px 5px -1px, #ffcc50 0px 1px 3px -1px;
       
   }
   header nav a {
@@ -153,106 +136,14 @@ body {
     
   }
   header > img{
+    display: flex;
     width: 70px;
+    justify-content: flex-start;
+    margin-left: 2%;
   }
 
 /* #endregion */
 
-/* #region TABLE */
 
-.table-container {
-  max-width: 100%;
-  overflow-x: auto; }
-
-table {
-  
-  width: 100%;
-  border-collapse: collapse;
-  white-space: nowrap;
-  font-size:1.75rem;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); }
-  table thead tr {
-    background-color: #0059ff;
-    color: #fff;
-    text-align: left; }
-    table thead tr th {
-      border: none;
-      font-size: 1.125rem;
-      padding: 2rem 1.25rem;
-      white-space: nowrap; }
-  table tbody tr {
-    border-bottom: none; }
-    table tbody tr:nth-of-type(even) {
-      background-color: #1a1196be; }
-    table tbody tr:last-of-type {
-      border-bottom: 4px solid #ff9800; }
-    table tbody tr td {
-      padding: 1rem 1.25rem;
-      border: none;
-      white-space: wrap; }
-      table tbody tr td img {
-        max-width: 100px;
-        height: auto; }
-
-#message-not-found {
-  display: none;
-  text-align: center;
-  font-size: 1rem;
-  padding: 2rem; }
-
-/* Estilos para la sección de filtros */
-#filter-section {
-
-  background-color: #2f2c79;
-  padding: 2rem;
-  border: none;
-  border: 1px solid #ff9800;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  align-items: center;
-  border-radius: 3px; }
-
-/* Estilos para los campos de filtro */
-input[type="text"],
-input[type="number"] {
-  flex-grow: 2;
-  min-width: 200px;
-  font-size: 1rem;
-  padding: 1rem;
-  border: 0.60px solid var(--color-secundario);
-  border-radius: 3px; }
-  input[type="text"]:focus, 
-  input[type="text"]:hover, 
-  input[type="text"]:active,
-  input[type="number"]:focus,
-  input[type="number"]:hover,
-  input[type="number"]:active {
-    border: 1px solid #ff9800; }
-
-/* Estilos para el botón del filtro */
-button {
-  border: none;
-  border-radius: 3px;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  font-size: 1rem;
-  padding: 1rem 1.5rem; }
-  button#apply-filters {
-    background-color: #0c4063;
-    color: #fff; }
-  button#apply-filters:hover {
-    background-color: #217dba; }
-  button#reset-filters {
-    background-color: #afadad;
-    color: #283848; }
-  button#reset-filters:hover {
-    background-color: #e2e9f1; }
-
-
-
-
-/* #endregion */
 
 
