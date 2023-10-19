@@ -26,19 +26,103 @@
 
   <main>
     
-    <div id="Inicio">
-      <nav class="imagen">
-        <img src="/src/assets/img/Inicio_IMG/control-del-juego.png" alt="logo" srcset="">
-      </nav>
-      <nav class="texto">
-        <h1>Bienvenido a la ventas de play&win</h1>
-        <h2>Proximamente...</h2>
-      </nav>
+    <div id="sales">
+      <h1>Ventas</h1>
+
+      <button id="addSale" class="btn-action">Agregar Nueva Venta</button>
+
+    </div>
+    <br>
+
+    <form id="filter-form" class="filter-section">
+
+      <select id="game-filter" class="filter-field" placeholder="Juego en mostrador">
+        <option value="" selected>Todos los juegos</option>
+        <!-- Llenaremos las opciones con datos consumidos desde una api -->
+      </select>
+
+      <input type="text" id="customer-filter" placeholder="Nombre del Cliente" class="filter-field">
+      <input type="text" id="salesman-filter" placeholder="Nombre del Vendedor" class="filter-field">
+      <input type="date" id="date-filter" placeholder="Precio máximo" class="filter-field">
+
+      <button type="submit" id="apply-filters" class="btn-submit">Consultar</button>
+      <button type="reset" id="reset-filters" class="btn">Limpiar</button>
+
+    </form>
+    
+    <br>
+
+    <div class="table-container">
+
+      <table id="data-table">
+        <thead>
+          <tr>
+            <th>No. Venta</th>
+            <th>Cliente</th>
+            <th>Teléfono</th>
+            <th>Producto vendido</th>
+            <th>Vendedor</th>
+            <th>Fecha de Venta</th>
+            <th class="text-right">Precio de venta</th>
+            <th>Notas</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="data-table-body">
+          <!-- Llenaremos la tabla con datos consumidos desde una api -->
+        </tbody>
+      </table>
+    </div>
+
+    <div id="message" class="message">
+      <p>No se ha realizado una consulta de ventas.</p>
+    </div>
+
+    <div id="modal-background" class="modal-background">
+
+    </div>
+
+    <div id="modal" class="modal">
+
+      <h2>NUEVA VENTA</h2>
+
+      <form id="sale-form" class="form-section">
+
+        <label for="customer-name-field">Cliente:</label>
+        <input type="text" id="customer-name-field" class="form-field" required>
+
+        <label for="customer-phone-field">Teléfono del Cliente:</label>
+        <input type="tel" id="customer-phone-field" class="form-field" required>
+
+        <label for="game-field">Juego:</label>
+        <select id="game-field" class="form-field" required>
+          <!-- Llenaremos las opciones con datos consumidos desde una api -->
+        </select>
+
+        <label for="sale-price-field">Precio de Venta:</label>
+        <input type="number" id="sale-price-field" class="form-field" required>
+
+        <label for="sale-date-field">Fecha de Venta:</label>
+        <input type="date" id="sale-date-field" class="form-field" required>
+
+        <label for="seller-field">Vendedor:</label>
+        <input type="text" id="seller-field" required>
+
+        <label for="notes-field">Detalles de la Venta:</label>
+        <textarea id="notes-field" class="form-field" required></textarea>
+
+        <button type="submit" class="btn-submit">Guardar Venta</button>
+
+      </form>
+
     </div>
 
     
-    
   </main>
+
+  <script src="../shared/utils.js"></script>
+  <script src="../shared/fetch-api.js"></script>
+  <script src="script.js"></script>
 
 </body>
 </html>

@@ -12,9 +12,9 @@ constructor (id, title, platform, description, price, rating, image){
     }
 }
 
-const game1 = new CatalogoJuegos(1,"Starfield","Xbox|PC","Exploracion espacial mundo abierto",60,7,"starfield.jpg")
-const game2 = new CatalogoJuegos(2,"Payday 3","Xbox|PC|PS","Co-op shooter",70,4,"payday3.jpg")
-const game3 = new CatalogoJuegos(3,"Lies of P","Xbox|PC|PS","Soulslike en el mundo de Pinnocho",50,10,"lies of p.jpg")
+const game1 = new CatalogoJuegos(1,"Starfield","Xbox | PC","Exploracion espacial mundo abierto",60,7,"starfield.jpg")
+const game2 = new CatalogoJuegos(2,"Payday 3","Xbox | PC | PS","Co-op shooter",70,4,"payday3.jpg")
+const game3 = new CatalogoJuegos(3,"Lies of P","Xbox | PC | PS","Soulslike en el mundo de Pinnocho",50,10,"lies of p.jpg")
 
 const CatalogoJuegosList = [game1,game2,game3];
 
