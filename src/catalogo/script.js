@@ -1,55 +1,60 @@
+//# VARIABLES GLOBALES
+
+const imagePath = `../assets/img/catalogo_IMG/`;
+
+const apiURL = 'https://65307d6f6c756603295eae35.mockapi.io/';
+
+let CatalogoJuegosList = [];
+
+//#endregion
+
 //#region MODELO DE DATOS
 class CatalogoJuegos{
 
-constructor (id, title, platform, description, price, rating, image){
+constructor (id, image, title, platform, description, price, rating){
     this.id = id;
-    this.title =title;
+    this.image = image ;
+    this.title = title;
     this.platform = platform;
     this.description = description;
     this.price = price;
     this.rating = rating;
-    this.image = image ;
     }
 }
 
-const game1 = new CatalogoJuegos(1,"Starfield","Xbox | PC","Exploracion espacial mundo abierto",60,7,"starfield.jpg")
-const game2 = new CatalogoJuegos(2,"Payday 3","Xbox | PC | PS","Co-op shooter",70,4,"payday3.jpg")
-const game3 = new CatalogoJuegos(3,"Lies of P","Xbox | PC | PS","Soulslike en el mundo de Pinnocho",50,10,"lies of p.jpg")
 
-const CatalogoJuegosList = [game1,game2,game3];
-
-
-
-console.log('Impresion en consola de elementos accesados con forEach(): ');
-CatalogoJuegosList.forEach(item => {console.log(item)});
 //#endregion
 
 
 //#region VISTA HTML
+
+function displayView(games) {
+
+  clearTable();
+
+  showLoadingMessage();
+
+  if (games.length === 0) {
+
+    showNotFoundMessage();
+
+  } else {
+
+    hideMessage();
+
+    displayTable(games);
+  }
+
+}
+
 function displayTable(games){
-    clearTable();
+  const tablaBody = document.getElementById('data-table-body');
 
-    showLoadingMessage();
+  games.forEach(game => {
 
-    setTimeout(() => {
+    const row = document.createElement('tr');
 
-        if (games.length === 0) {
-    
-          showNotFoundMessage();
-    
-        } else {
-    
-            hideMessage();
-    
-            const tablaBody = document.getElementById('data-table-body');
-    
-            const imagePath = `../assets/img/catalogo_IMG/`;
-    
-            games.forEach(game => {
-    
-              const row = document.createElement('tr');
-    
-              row.innerHTML = `
+    row.innerHTML = `
                 <td> ${game.id} </td>
                 <td> <img src="${imagePath + game.image}" alt="${game.title}" width="100"> </td>
                 <td>${game.title}</td>
@@ -58,16 +63,13 @@ function displayTable(games){
                 <td>${game.price}</td>
                 <td>${game.rating}</td>
               `;
-    
-              tablaBody.appendChild(row);
-    
-            });
-    
-        }
-    
-      }, 2000);
 
+    tablaBody.appendChild(row);
+
+  });
 }
+
+
 
 function clearTable() {
     const tableBody = document.getElementById('data-table-body');
@@ -121,7 +123,6 @@ function initButtonsHandler() {
 }
 
 
-// Funcion que gestiona la aplicacion del filtro a los datos y su despliegue.
 function applyFilters() {
   const filterText = document.getElementById('text').value.toLowerCase();
   const filterRating = parseFloat(document.getElementById('rating').value);
@@ -130,11 +131,9 @@ function applyFilters() {
 
   const filteredGames = filterGames(CatalogoJuegosList, filterText, filterRating, filterMinPrice, filterMaxPrice);
 
-  displayTable(filteredGames);
+  displayView(filteredGames);
 }
 
-
-// Funcion con la logica para filtrar las casas.
 function filterGames(games, text, rating, minPrice, maxPrice) {
 
   return games.filter( game =>
@@ -150,9 +149,46 @@ function filterGames(games, text, rating, minPrice, maxPrice) {
 
 //#endregion
 
+  //#region CONSUMO DE DATOS DESDE API
+  function searchData() {
+
+    const OPTIONS = {
+      method: 'GET'
+    };
+
+    fetch(`${apiURL}/catalogo`, OPTIONS)
+      .then(response => response.json())
+      .then(data => {
+        CatalogoJuegosList = data.map(item => {
+
+          return new CatalogoJuegos(
+          
+            item.id,
+            item.image,
+            item.title,
+            item.platform,
+            item.description,
+            item.price,
+            item.rating,
+            
+          );
+        });
+
+        displayView(CatalogoJuegosList);
+
+      })
+      .catch(error => console.log(error));
+
+  }
+
+//#endregion
 
 
 
-displayTable(CatalogoJuegosList);
+
 
 initButtonsHandler();
+
+showLoadingMessage();
+
+searchData();

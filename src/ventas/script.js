@@ -1,18 +1,11 @@
-//#region 1. VARIABLES GLOBALES
-
-
-//#endregion
-
-
 //#region 2. MODELO DE DATOS (MODELS)
 
-// Definimos la clase Sale
 class Sale {
     constructor(id, client, telNumber, game, dateOfSale, seller, price, notes) {
       this.id = id; // Identificador de la venta
       this.client = client; // Nombre del cliente
       this.telNumber = telNumber; // Teléfono del cliente
-      this.game = game; // Referencia al modelo de la casa vendida
+      this.game = game; // Referencia al juego
       this.seller = seller; // Vendedor
       this.dateOfSale = dateOfSale; // Fecha de la venta
       this.price = price; // Precio de la venta
@@ -35,7 +28,6 @@ class Sale {
     });
   }
   
-  // Definimos la clase de game con los datos necesarios
   class GameDescriptor {
   
     constructor(id, title, price) {
@@ -87,8 +79,6 @@ function displaySalesView(sales) {
     showInitialMessage();
   }
   
-  
-  // Funcion que agrega los datos de los modelos de casas a la tabla.
   function displaySalesTable(sales) {
   
     const tablaBody = document.getElementById('data-table-body');
@@ -103,7 +93,7 @@ function displaySalesView(sales) {
         <td>${sale.telNumber}</td>
         <td>${sale.game}</td>
         <td>${sale.seller}</td>
-        <td>${sale.dateOfSale}</td>
+        <td>${formatDate(sale.dateOfSale)}</td>
         <td class="text-right">${formatCurrency(sale.price)}</td>
         <td>${sale.notes}</td>
         <td>
@@ -118,16 +108,12 @@ function displaySalesView(sales) {
     initDeleteSaleButtonHandler();
   }
   
-  
-  // Funcion que limpia la tabla
   function clearTable() {
     const tableBody = document.getElementById('data-table-body');
   
     tableBody.innerHTML = '';
   }
   
-  
-  // Funcion que muestra mensaje de carga
   function showLoadingMessage() {
     const message = document.getElementById('message');
   
@@ -136,8 +122,6 @@ function displaySalesView(sales) {
     message.style.display = 'block';
   }
   
-  
-  // Funcion que muestra mensaje de carga
   function showInitialMessage() {
     const message = document.getElementById('message');
   
@@ -146,8 +130,6 @@ function displaySalesView(sales) {
     message.style.display = 'block';
   }
   
-  
-  // Funcion que muestra mensaje de que no se encuentraron datos
   function showNotFoundMessage() {
     const message = document.getElementById('message');
   
@@ -156,8 +138,6 @@ function displaySalesView(sales) {
     message.style.display = 'block';
   }
   
-  
-  // Funcion que oculta mensaje
   function hideMessage() {
     const message = document.getElementById('message');
   
@@ -210,16 +190,55 @@ function initFilterButtonsHandler() {
 
 function initAddSaleButtonsHandler() {
 
-    document.getElementById('addSale').addEventListener('click', () => {
-        document.getElementById('modal-background').style.display = 'block';
-        document.getElementById('modal').style.display = 'block';
-    });
+  document.getElementById('addSale').addEventListener('click', () => {
+    openAddSaleModal()
+  });
+
+  document.getElementById('modal-background').addEventListener('click', () => {
+    closeAddSaleModal();
+  });
+
+  document.getElementById('sale-form').addEventListener('submit', event => {
+    event.preventDefault();
+    processSubmitSale();
+  });
   
-    document.getElementById('modal-background').addEventListener('click', () => {
-        document.getElementById('modal-background').style.display = 'none';
-        document.getElementById('modal').style.display = 'none';
-    });
+  }
+  function openAddSaleModal() {
+    document.getElementById('sale-form').reset();
+    document.getElementById('modal-background').style.display = 'block';
+    document.getElementById('modal').style.display = 'block';
+  }
   
+  
+  function closeAddSaleModal() {
+    document.getElementById('sale-form').reset();
+    document.getElementById('modal-background').style.display = 'none';
+    document.getElementById('modal').style.display = 'none';
+  }
+  
+  
+  function processSubmitSale() {
+    const client = document.getElementById('client-field').value;
+    const telNumber = document.getElementById('telNumber-field').value;
+    const game = document.getElementById('game-field').value;
+    const seller = document.getElementById('seller-field').value;
+    const dateofSale = document.getElementById('dateofSale-field').value;
+    const price = document.getElementById('price-field').value;
+    const notes = document.getElementById('notes-field').value;
+  
+    const saleToSave = new Sale(
+      null,
+      client,
+      telNumber,
+      game,
+      dateofSale,
+      seller,
+      parseFloat(price),
+      notes
+    );
+  
+    createSale(saleToSave);
   }
   
   
@@ -229,8 +248,8 @@ function initAddSaleButtonsHandler() {
   
       button.addEventListener('click', () => {
   
-        const saleId = button.getAttribute('data-sale-id'); // Obtenemos el ID de la venta
-        deleteSale(saleId); // Llamamos a la función para eleminar la venta
+        const saleId = button.getAttribute('data-sale-id');
+        deleteSale(saleId); 
   
       });
   
@@ -239,13 +258,9 @@ function initAddSaleButtonsHandler() {
   }
   
   
-  // Mostrar y ocultar el modal para agregar una nueva venta.
-  
   //#endregion
   
 //#region 6. CARGAR DATOS DE MODELOS PARA FORM (VIEW)
-
-// Funcion que agrega los datos de los modelos de casas a la tabla.
 function displayGameOptions(games) {
 
     const gameFilter = document.getElementById('game-filter');
@@ -286,7 +301,7 @@ function getGameData() {
   
   function getSalesData(game, client, seller, dateOfSale) {
   
-    const url = `${apiURL}/ventas`;
+    const url = buildGetSalesDataUrl(game,client,seller,dateOfSale);
   
     fetchAPI(url, 'GET')
       .then(data => {
@@ -310,6 +325,45 @@ function getGameData() {
   
     }
   }
+
+  function createSale(sale) {
+
+    fetchAPI(`${apiURL}/ventas`, 'POST', sale)
+      .then(sale => {
+        closeAddSaleModal();
+        resetSales();
+        window.alert(`Venta ${sale.id} creada correctamente.`);
+      });
+  
+  }
+
+
+function buildGetSalesDataUrl(game, client, seller, dateofSale) {
+
+  const url = new URL(`${apiURL}/ventas`);
+
+  if (game) {
+    url.searchParams.append('game', game);
+  }
+
+  if (client) {
+    url.searchParams.append('client', client);
+  }
+
+  if (seller) {
+    url.searchParams.append('seller', seller);
+  }
+
+  if (dateofSale) {
+    url.searchParams.append('dateofSale', dateofSale);
+  }
+
+  return url;
+}
+
+
+
+
   
   //#endregion
   
