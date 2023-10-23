@@ -33,7 +33,7 @@ body {
     font-family: var(--font-family);
     font-size: var(--font-size);
     font-weight: var(--font-weight);
-    background-color: #000020;
+    background: #000020;
     color: #ff9800;
   }
 
@@ -159,9 +159,9 @@ table {
 }
 
 table thead tr {
-  background-color: #354a5f;
-  color: #fff;
-  text-align: left;
+  background-color: #171a4a;
+    color: #ff9800;
+    text-align: left; 
 }
 
 table thead tr th {
@@ -169,6 +169,7 @@ table thead tr th {
   font-size: 1.125rem;
   padding: 2rem 1.25rem;
   white-space: nowrap;
+  text-align: center;
 }
 
 table tbody tr {
@@ -176,11 +177,11 @@ table tbody tr {
 }
 
 table tbody tr:nth-of-type(even) {
-  background-color: #f3f6f9;
+  background-color: #2f2c79; 
 }
 
 table tbody tr:last-of-type {
-  border-bottom: 4px solid #354a5f;
+  border-bottom: 4px solid #ff9800;
 }
 
 table tbody tr td {
@@ -201,22 +202,24 @@ table tbody tr td img {
 }
 
 .filter-section {
-  background-color: white;
-  padding: 1.5rem;
-  border: none;
-  border: 1px solid #d1dde8;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  align-items: center;
-  border-radius: 3px;
+  
+
+    background-color: #2f2c79;
+    padding: 2rem;
+    border: none;
+    
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    border-radius: 3px; 
 }
 
 .form-section {
   display: flex;
   flex-direction: column;
   width: 50vw;
-  background-color: white;
+  background-color: #2f2c79;
   padding: 1rem;
   flex-wrap: wrap;
   gap: 1rem;
@@ -230,9 +233,13 @@ table tbody tr td img {
 input,
 textarea,
 select {
+  flex-grow: 2;
+  min-width: 200px;
+  background-color:#171a4a ;
+  color: #ff9800;
   font-size: 1rem;
   padding: 1rem;
-  border: 1px solid #d1dde8;
+  border: 0.60px solid #000020;
   border-radius: 3px;
 }
 
@@ -243,13 +250,20 @@ textarea:active,
 select:focus,
 select:hover,
 select:active {
-  border: 1px solid #354a5f;
+  border: 1px solid #ff9800;
 }
 
-input[type="text"],
+input[type="text"]{
+  flex-grow: 1;
+  min-width: 200px;
+  background-color:#171a4a ;
+    color: #ff9800;
+}
 input[type="number"] {
   flex-grow: 1;
   min-width: 200px;
+  background-color:#171a4a ;
+    color: #ff9800;
 }
 
 input[type="date"] {
@@ -274,40 +288,55 @@ button {
 }
 
 button.btn {
-  background-color: #f3f6f9;
-  color: #283848;
+  background-color: #2f2c79;
+    border-radius: 8px; 
+    border: 1px solid #171a4a;
+    color: #ff9800;
 }
 
 button.btn:hover {
-  background-color: #e2e9f1;
+  background: #171a4a;
+  border-radius: 8px; 
+  box-shadow: #ffcc50 0px 2px 5px -1px, #ffcc50 0px 1px 3px -1px; 
 }
 
 button.btn-action {
-  background-color: #354a5f;
-  color: #fff;
+ background-color: #2f2c79;
+    border-radius: 8px; 
+    border: 1px solid #171a4a;
+    color: #ff9800;
 }
 
 button.btn-action:hover {
-  background-color: #22303f;
+  background: #171a4a;
+  border-radius: 8px; 
+  box-shadow: #ffcc50 0px 2px 5px -1px, #ffcc50 0px 1px 3px -1px; 
 }
 
 button.btn-submit {
-  background-color: #3398db;
-  color: #fff;
+  background-color: #2f2c79;
+  border-radius: 8px; 
+  border: 1px solid #171a4a;
+  color: #ff9800;
 }
 
 button.btn-submit:hover {
-  background-color: #217dba;
+  background: #171a4a;
+  border-radius: 8px; 
+  box-shadow: #ffcc50 0px 2px 5px -1px, #ffcc50 0px 1px 3px -1px; 
 }
 
 button.btn-delete {
-  background-color: white;
-  border: 2px solid #c77070;
-  color: #c77070;
+  background-color: #2f2c79;
+    border-radius: 8px; 
+    border: 1px solid #171a4a;
+    color: #ff9800;
 }
 
 button.btn-delete:hover {
-  background-color: #fcf8f8;
+  background: #171a4a;
+  border-radius: 8px; 
+  box-shadow: #ffcc50 0px 2px 5px -1px, #ffcc50 0px 1px 3px -1px; 
 }
 
 .modal-background {
@@ -326,8 +355,40 @@ button.btn-delete:hover {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: white;
+  background: #171a4a;
   padding: 20px;
   border: 1px solid #ccc;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
+#sale-form{
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  height: 40vw;
+  background-color: #2f2c79;
+  padding: .5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+#sale-form > input,#sale-form > select{
+  flex-grow: 1;
+    width: 500px;
+    height: 30px;
+    background-color: #171a4a;
+    color: #ff9800;
+    align-self: center;
+    height: auto;
+  }
+  #sale-form > textarea{
+    flex-grow: 1;
+    width: 100px;
+    height: 50px;
+    background-color: #171a4a;
+    color: #ff9800;
+    align-self: center;
+  }
+
+  #customer-filter{
+    color: #ff9800;
+  }

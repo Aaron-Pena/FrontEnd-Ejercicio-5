@@ -166,7 +166,9 @@ table {
       border: none;
       font-size: 1.125rem;
       padding: 2rem 1.25rem;
-      white-space: nowrap; }
+      white-space: nowrap;
+      text-align: center;
+    }
   table tbody tr {
     border-bottom: none; }
     table tbody tr:nth-of-type(even) {
